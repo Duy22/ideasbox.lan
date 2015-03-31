@@ -9,6 +9,7 @@
     {% include "ideasbox/pagination.html" %}
 {% endblock twothird %}
 {% block third %}
+	{% include 'search/box.html' %}
     {% if user.is_staff %}
         <div class="card tinted admin">
             {% fa 'plus' 'fa-fw' %} <a href="{% url 'blog:content_create' %}">{% trans "Add content" %}</a>

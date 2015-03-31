@@ -13,9 +13,13 @@
     {% include "ideasbox/pagination.html" %}
 {% endblock twothird %}
 {% block third %}
-    <ul class="card tinted admin">
-        <li>{% fa 'plus' 'fa-fw' %} <a href="{% url 'library:book_create' %}">{% trans "Add a book" %}</a></li>
-        <li>{% fa 'upload' 'fa-fw' %} <a href="{% url 'library:book_import' %}">{% trans "Import notices" %}</a></li>
-    </ul>
+	{% include 'search/box.html' %}
+	{% if user.is_staff %}
+		<ul class="card tinted admin">
+			<li>{% fa 'plus' 'fa-fw' %} <a href="{% url 'library:book_create' %}">{% trans "Add a book" %}</a></li>
+			<li>{% fa 'upload' 'fa-fw' %} <a href="{% url 'library:book_import' %}">{% trans "Import notices" %}</a></li>
+		</ul>
+	{% endif %}
     {% tag_cloud url="library:by_tag" model=view.model %}
+	<!-- % include doesn't work if the template doesn't exist !-->
 {% endblock third %}
